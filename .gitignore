@@ -1,0 +1,6 @@
+*.class
+.vscode
+/gitarra/.settings
+/gitarra/.vscode
+/gitarra/.classpath
+/gitarra/target/
