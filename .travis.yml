@@ -1,3 +1,5 @@
 language: java
 script:
-- cd lab3/scripts; ./server.sh; ./client.sh; cd ..; mvn test;
+- cd lab3/scripts; ./server.sh &
+- cd ..; mvn test
+- killall java
