@@ -11,7 +11,7 @@ public interface GuitarDao {
 	public void setConnection(Connection connection) throws SQLException;
 	public List<Guitar> getAllGuitars();
 	public int addGuitar(Guitar guitar);
-	public int deleteGuitar(Guitar guitar);
+	public int deleteGuitar(Guitar guitar) throws SQLException;
 	public int updateGuitar(Guitar guitar) throws SQLException;
 	public Guitar getGuitar(long id) throws SQLException;
 }

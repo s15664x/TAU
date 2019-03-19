@@ -84,8 +84,17 @@ public class GuitarDaoTest {
         guitar.setModel("Xiphos");
         guitar.setNumberOfStrings(7);
 
-        assertEquals(1, guitarManager.addGuitar(guitar));
+        guitarManager.addGuitar(guitar);
+        expectedDbState.add(guitar);
+        assertThat(guitarManager.getAllGuitars(), equalTo(expectedDbState));
+    }
 
+    @Test(expected = java.lang.NullPointerException.class)
+    public void checkAddingFailure() throws Exception {
+        Guitar guitar = new Guitar();
+        guitar.setManufacturer("Ibanez");
+
+        guitarManager.addGuitar(guitar);
         expectedDbState.add(guitar);
         assertThat(guitarManager.getAllGuitars(), equalTo(expectedDbState));
     }
@@ -96,14 +105,27 @@ public class GuitarDaoTest {
         assertEquals(guitar, guitarManager.getGuitar(guitar.getId()));
     }
 
-    @Test(expected = SQLException.class)
+    @Test(expected = Exception.class)
+    public void checkGettingFailure() throws Exception {
+        Guitar guitar = expectedDbState.get(69876);
+        guitarManager.getGuitar(guitar.getId());
+    }
+
+    @Test()
     public void checkDeleting() throws SQLException {
         Guitar guitar = expectedDbState.get(3);
         expectedDbState.remove(guitar);
-        assertEquals(1, guitarManager.deleteGuitar(guitar));
+        guitarManager.deleteGuitar(guitar);
         assertThat(guitarManager.getAllGuitars(), equalTo(expectedDbState));
-        assertNull(guitarManager.getGuitar(guitar.getId()));
     }
+
+    @Test(expected = SQLException.class)
+    public void checkDeletingException() throws SQLException {
+        Guitar guitar = expectedDbState.get(4);
+        guitarManager.deleteGuitar(guitar);
+        guitarManager.getGuitar(guitar.getId());
+    }
+
 
     @Test()
     public void checkUpdatingSuccess() throws SQLException {
