@@ -2,4 +2,4 @@ language: java
 script:
 - cd lab3/scripts; ./server.sh; &
 - cd lab3/scipts; ./client.sh;  &
-- cd lab3; mvn test;
+- cd lab3; mvn test; && fg
