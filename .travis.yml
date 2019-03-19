@@ -3,3 +3,4 @@ script:
 - cd lab3/scripts; ./server.sh &
 - cd ..; mvn test
 - killall java
+

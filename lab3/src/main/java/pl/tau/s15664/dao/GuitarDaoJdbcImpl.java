@@ -107,7 +107,7 @@ public class GuitarDaoJdbcImpl implements GuitarDao {
     }
 
     @Override
-    public int deleteGuitar(Guitar guitar) {
+    public int deleteGuitar(Guitar guitar) throws SQLException {
         try {
             deleteGuitarStmt.setLong(1, guitar.getId());
             return deleteGuitarStmt.executeUpdate();
