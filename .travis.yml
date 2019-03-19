@@ -1,9 +1,5 @@
 language: java
 script:
 - cd lab3/scripts; ./server.sh; &
-P1=$!
 - cd lab3/scipts; ./client.sh;  &
-P2=$!
-- cd lab3; mvn test; &
-P3=$!
-wait $P1 $P2 $P3
+- cd lab3; mvn test; fg
