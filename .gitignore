@@ -8,4 +8,4 @@
 */target
 *.lst
 *.txt
-lab5/guitarcucumber/target/surefire-reports/TEST-guitarcucumber.RunCucumberTest.xml
+lab5/guitarcucumber/target/*
