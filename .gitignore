@@ -8,4 +8,5 @@
 */target
 *.lst
 *.txt
-lab5/guitarcucumber/target/*
+lab5/guitarcucumber/target/
+lab5/guitarcucumber/target/*.feature
