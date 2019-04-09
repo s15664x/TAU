@@ -3,7 +3,6 @@ package guitarcucumber;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import guitarcucumber.BuyGuitar;
 import guitarcucumber.GuitarSearch;
 import guitarcucumber.Guitar;
 import java.util.List;
@@ -17,25 +16,25 @@ public class Stepdefs {
 
     @Given("Client is logged in")
     public void client_is_logged_in() {
-        BuyGuitar bg = new BuyGuitar();
-        if(bg.isLoggedIn() == true) {
-            bg.setCanClick(true);
+        Guitar g = new Guitar();
+        if(g.isLoggedIn() == true) {
+            g.setCanClick(true);
         }
     }
 
     @When("Client clicked {string}")
     public void client_clicked(String string) {
-        BuyGuitar bg = new BuyGuitar();
-        if(bg.canClick() == true && string == "BUY") {
-            bg.setClickStatus(true);
+        Guitar g = new Guitar();
+        if(g.canClick() == true && string == "BUY") {
+            g.setClickStatus(true);
         }    
     }
 
     @Then("Guitar is sold")
     public void guitar_is_sold() {
-        BuyGuitar bg = new BuyGuitar();
-        bg.setSoldStatus(true);
-        assertTrue(bg.getSoldStatus() == expectedStatus);
+        Guitar g = new Guitar();
+        g.setSoldStatus(true);
+        assertTrue(g.getSoldStatus() == expectedStatus);
     }
 
     private List<Guitar> list = new ArrayList<>();
@@ -98,5 +97,6 @@ public class Stepdefs {
         if(list2.remove(list2.get(0))) {
             string = "deleted";
         }
+        assertEquals(1, list2.size());
     }
 }

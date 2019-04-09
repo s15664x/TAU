@@ -7,6 +7,11 @@ public class Guitar {
 	private String manufacturer;
 	private String model;
 	private Integer numberOfStrings;
+    private boolean soldStatus = false;
+    private boolean canClick = false;
+    private boolean clicked = false;
+    private boolean loggedIn = false;
+
 
 	public Guitar() {
 	}
@@ -49,6 +54,35 @@ public class Guitar {
 	public void setNumberOfStrings(int ns) {
 		this.numberOfStrings = ns;
 	}
+
+
+    public boolean isLoggedIn() {
+        return this.loggedIn;
+    }
+
+    public boolean getSoldStatus() {
+        return this.soldStatus;
+    }
+
+    public boolean canClick() {
+        return this.canClick;
+    }
+
+    public boolean isClicked() {
+        return this.clicked;
+    }
+
+    public void setCanClick(boolean cc) {
+        this.canClick = cc;
+    }
+
+    public void setSoldStatus(boolean status) {
+        this.soldStatus = status;
+    }
+
+    public void setClickStatus(boolean clicked) {
+        this.clicked = clicked;
+    }
 
 	@Override
 	public boolean equals(Object o) {
