@@ -62,6 +62,7 @@ public class GuitarManagerTest {
 
 		addGuitarHelper("Mayones","Duvell");
 		addGuitarHelper("Gibson","SG");
+		addGuitarHelper("???", "LTD");
 	}
 
 	@Test
@@ -97,8 +98,24 @@ public class GuitarManagerTest {
 	}
 
 	@Test
+	public void updateGuitarTest() {
+		Guitar guitar = guitarManager.findGuitarById(guitarIds.get(2));
+		assertNotNull(guitar);
+		guitar.setManufacturer("ESP");
+		guitarManager.updateGuitar(guitar);
+		Guitar updatedGuitar = guitarManager.findGuitarById(guitarIds.get(2));
+		assertEquals("ESP", updatedGuitar.getManufacturer());
+	}
+
+	@Test
 	public void findByGuitarModelTest() {
 		List<Guitar> guitars = guitarManager.findGuitarsByModel("vel");
 		assertEquals("Duvell", guitars.get(0).getModel());
+	}
+
+	@Test
+	public void findByGuitarManufacturerTest() {
+		List<Guitar> guitars = guitarManager.findGuitarsByManufacturer("ayo");
+		assertEquals("Mayones", guitars.get(0).getManufacturer());
 	}
 }

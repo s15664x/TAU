@@ -30,16 +30,16 @@ public class GuitarMangerHibernateImpl implements GuitarManager {
 		return (Long) sessionFactory.getCurrentSession().save(guitar);
 	}
 
-	@Override
-	public void updateGuitar(Guitar guitar) {
-
-	}
 
 	@Override
 	public Guitar findGuitarById(Long id) {
 		return (Guitar) sessionFactory.getCurrentSession().get(Guitar.class, id);
 	}
 
+	@Override
+    public void updateGuitar(Guitar guitar) {
+        sessionFactory.getCurrentSession().update(guitar);
+	}
 	@Override
 	public List<Guitar> findGuitarsByModel(String modelNameFragment) {
 		return (List<Guitar>) sessionFactory.getCurrentSession()
@@ -66,10 +66,6 @@ public class GuitarMangerHibernateImpl implements GuitarManager {
 				.list();
 	}
 
-	@Override
-	public List<Guitar> findAvailableGuitars() {
-		return null;
-	}
 
 
 }
